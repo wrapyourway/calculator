@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wrap Your Way Wrapping Paper Sizing Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      .result {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Wrap Your Way Wrapping Paper Sizing Calculator</h2>
+      <form id="wrapping-paper-calculator">
+        <div class="form-group">
+          <label for="gift-box-height">Gift Box Height (in inches):</label>
+          <input
+            type="number"
+            id="gift-box-height"
+            min="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="gift-box-width">Gift Box Width (in inches):</label>
+          <input
+            type="number"
+            id="gift-box-width"
+            min="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="gift-box-depth">Gift Box Depth (in inches):</label>
+          <input
+            type="number"
+            id="gift-box-depth"
+            min="0"
+            required
+          />
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <p id="result" class="result"></p>
+
+      <script>
+        document
+          .getElementById("wrapping-paper-calculator")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Fetching input values
+            const giftBoxHeight = parseInt(
+              document.getElementById("gift-box-height").value
+            );
+            const giftBoxWidth = parseInt(
+              document.getElementById("gift-box-width").value
+            );
+            const giftBoxDepth = parseInt(
+              document.getElementById("gift-box-depth").value
+            );
+
+            // Calculating wrapping paper dimensions
+            const paperWidth = giftBoxWidth + 1;
+            const paperLength =
+              (giftBoxHeight + 1) + (giftBoxDepth + 1) + 1;
+
+            // Displaying the result
+            document.getElementById(
+              "result"
+            ).innerText = `You will need ${paperWidth} inches of wrapping paper width and ${paperLength} inches of wrapping paper length.`;
+          });
+      </script>
+    </div>
+  </body>
+</html>
